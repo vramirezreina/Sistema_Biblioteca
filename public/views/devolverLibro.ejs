@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devolver Libro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <div class="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Realizar Devolución</h1>
+
+    <!-- Formulario de devolución -->
+    <form action="/devolverLibro" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="number" name="idLibro" placeholder="ID del libro" required class="p-2 border border-gray-300 rounded">
+      <input type="text" name="idUsuario" placeholder="ID del usuario" required class="p-2 border border-gray-300 rounded">
+
+      <button type="submit" style="background-color: #c6a16f;" class="col-span-2 text-white py-2 px-4 rounded hover:opacity-90 font-semibold mt-2">
+        <i class="fa-solid fa-retweet mr-2"></i>Devolver libro
+      </button>
+    </form>
+
+    <!-- Botón volver -->
+    <div class="mt-6 text-center">
+      <a href="/" class="inline-block text-white px-4 py-2 rounded hover:opacity-90" style="background-color: #833a2e;">
+        <i class="fas fa-arrow-left mr-2"></i>Volver al inicio
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

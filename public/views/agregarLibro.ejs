@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Libro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Agregar Libro</h1>
+
+    <!-- Formulario -->
+    <form action="/agregarLibro" method="POST" class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <input type="number" name="id" placeholder="ID del libro" required class="p-2 border border-gray-300 rounded">
+      <input type="text" name="titulo" placeholder="Título del libro" required class="p-2 border border-gray-300 rounded">
+      <input type="text" name="autor" placeholder="Autor del libro" required class="p-2 border border-gray-300 rounded">
+      <input type="number" name="stock" placeholder="Stock del libro" required class="p-2 border border-gray-300 rounded ">
+
+      <button type="submit" style="background-color: #c6a16f;" class="col-span-2 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 font-semibold mt-2">
+        <i class="fas fa-plus mr-2"></i>Agregar libro
+      </button>
+    </form>
+
+    <!-- Tabla -->
+    <h2 class="text-xl font-semibold mt-10 mb-4">Libros Disponibles</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead class="bg-blue-600 text-white" style="background-color: #4f8f6c">
+          <tr>
+            <th class="px-4 py-2 text-left">ID</th>
+            <th class="px-4 py-2 text-left">Título del libro</th>
+            <th class="px-4 py-2 text-left">Autor</th>
+            <th class="px-4 py-2 text-left">Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% libros.forEach(libro => { %>
+            <tr class="border-t">
+              <td class="px-4 py-2"><%= libro.id %></td>
+              <td class="px-4 py-2"><%= libro.titulo %></td>
+              <td class="px-4 py-2"><%= libro.autor %></td>
+              <td class="px-4 py-2"><%= libro.stock %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Botón volver -->
+    <div class="mt-6 text-center">
+      <a href="/" class="inline-block bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" style="background-color: #833a2e;">
+        <i class="fas fa-arrow-left mr-2"></i>Volver al inicio
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
