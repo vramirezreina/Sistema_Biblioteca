@@ -124,4 +124,9 @@ class ArbolLibros {
   }
 }
 
+const grafo = require('./grafo');
+// ...
+insertar(this.root, nuevoLibro);
+grafo.addNode(`b-${id}`);
+
 module.exports = ArbolLibros;

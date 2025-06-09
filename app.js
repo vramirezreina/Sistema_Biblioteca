@@ -13,6 +13,12 @@ const arbolUsuarios = new ArbolUsuarios();
 const GestorPrestamos = require('./prestamos');
 const gestorPrestamos = new GestorPrestamos();
 
+const Grafo = require("./grafo");
+const grafo = new Grafo(); // Instancia única del grafo en memoria
+
+// Datos de ejemplo de usuarios y libros, normalmente lo cargarías desde DB
+const usuario = ["usuario1", "usuario2", "usuario3"];
+const libros = ["libroA", "libroB", "libroC"];
 
 const usuarios = [];
 
@@ -90,6 +96,8 @@ app.get('/', (req, res) => {
     if (libro.stock > 0) {
       libro.stock -= 1; // Disminuir stock
       gestorPrestamos.realizarPrestamo(libro, usuario);
+
+      grafo.agregarPrestamo(usuario.id, libro.id, new Date().toLocaleDateString());
       res.render('prestarLibro', {
         libros: arbolLibros.mostrarLibros(),
         usuarios: arbolUsuarios.mostrarUsuarios(),
@@ -136,3 +144,20 @@ app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
 
+
+
+
+// Procesar préstamo de libro y actualizar grafo
+router.post("/prestarLibro", (req, res) => {
+  const { usuario, libro } = req.body;
+  const fecha = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
+
+  grafo.agregarRelacion(usuario, libro, fecha);
+
+  // Puedes imprimir en consola para verificar
+  console.log("Relaciones actualizadas:", grafo.obtenerRelaciones());
+
+  res.redirect("/"); // Regresa a la página principal
+});
+
+module.exports = router;

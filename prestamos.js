@@ -37,4 +37,14 @@ class GestorPrestamos {
   
 }
 
+// prestamo.js  (o tu controlador Express)
+const grafo = require('./grafo');
+
+// Cuando se hace el préstamo
+grafo.addEdge(`u-${usuario.id}`, `b-${libro.id}`);
+
+// Cuando se devuelve
+grafo.removeEdge(`u-${usuario.id}`, `b-${libro.id}`);
+
+
 module.exports = GestorPrestamos;

@@ -85,4 +85,11 @@ class ArbolUsuarios {
       return node;
     }
   }
+
+  // arbolUsuarios.js  (al finalizar insertarUsuario)
+const grafo = require('./grafo');
+// ...
+insertar(this.root, nuevoUsuario);
+grafo.addNode(`u-${id}`);
+
   module.exports = ArbolUsuarios;
